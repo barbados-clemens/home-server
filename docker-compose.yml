@@ -41,7 +41,7 @@ services:
       # - REDIS_URL= #optional
     volumes:
       - $PWD/papermerge/appdata/config:/config
-      - /mnt/filestore/papermerge>:/data
+      - /mnt/filestore/papermerge:/data
     ports:
       - 8000:8000
     restart: unless-stopped
