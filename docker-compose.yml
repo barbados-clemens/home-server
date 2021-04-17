@@ -53,7 +53,7 @@ services:
     ports:
       - 5800:5800
     volumes:
-      - $PWD/makemkv/appdata:/config:rw"
+      - $PWD/makemkv/appdata:/config:rw
       - $HOME:/storage:ro
       - /mnt/media/ingest:/output:rw
     devices:
