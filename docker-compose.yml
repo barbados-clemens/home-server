@@ -5,6 +5,7 @@ services:
     image: homeassistant/home-assistant:stable
     volumes:
       - $PWD/home-assistant/config:/config
+      - /mnt/media:/media/nas
     environment:
       - TZ=America/Chicago
     restart: unless-stopped
