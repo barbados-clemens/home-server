@@ -1,0 +1,14 @@
+name: validator
+on: [push, pull_request]
+
+jobs:
+  docker:
+    name: Validate Docker Config
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Validate Docker Compose File
+        run: |
+          docker-compose -f docker-compose.yml config
