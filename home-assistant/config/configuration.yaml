@@ -10,7 +10,14 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
-# Example configuration.yaml entry
 media_player:
   - platform: yamaha_musiccast
     host: 192.168.1.139
+
+
+binary_sensor:
+  - platform: ping
+    host: 1.1.1.1
+    name: "Cloudflare DNS Check"
+    count: 5
+    scan_interval: 90
