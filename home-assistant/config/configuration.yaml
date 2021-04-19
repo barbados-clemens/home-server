@@ -3,7 +3,7 @@ default_config:
 
 # Text to speech
 tts:
-  - platform: google_translate
+    - platform: google_translate
 
 group: !include groups.yaml
 automation: !include automations.yaml
@@ -11,13 +11,12 @@ script: !include scripts.yaml
 scene: !include scenes.yaml
 
 media_player:
-  - platform: yamaha_musiccast
-    host: 192.168.1.139
-
+    - platform: yamaha_musiccast
+      host: 192.168.1.139
 
 binary_sensor:
-  - platform: ping
-    host: 1.1.1.1
-    name: "Cloudflare DNS Check"
-    count: 5
-    scan_interval: 90
+    - platform: ping
+      host: 1.1.1.1
+      name: "Cloudflare DNS Check"
+      count: 2
+      scan_interval: 15
