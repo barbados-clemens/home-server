@@ -1,0 +1,62 @@
+- id: "1618701346061"
+  alias: Set Living Room lights when playing apple tv
+  description: ""
+  trigger:
+    - platform: state
+      entity_id: media_player.living_room_apple_tv
+      to: playing
+      for: 00:00:15
+  condition:
+    - condition: state
+      entity_id: media_player.living_room_apple_tv
+      state: Plex
+      attribute: app_name
+  action:
+    - scene: scene.tv_time
+  mode: single
+- id: "1618702660714"
+  alias: Set lights for cleaning
+  description: ""
+  trigger:
+    - platform: event
+      event_type: START_CLEANING
+  condition: []
+  action:
+    - scene: scene.cleaning_lights
+  mode: single
+- id: "1618839795076"
+  alias: Set lights when not internet ping
+  description: ""
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.cloudflare_dns_check
+      from: "on"
+      to: "off"
+      for: "30"
+  condition: []
+  action:
+    - scene: scene.no_internet_lights
+  mode: single
+- id: "1618840048067"
+  alias: Set normal office lights when internet ping resumes
+  description: ""
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.cloudflare_dns_check
+      from: "off"
+      to: "on"
+      for: "10"
+  condition: []
+  action:
+    - scene: scene.clear_office_lights
+  mode: single
+- id: "1618878988783"
+  alias: Start movie on Plex when tag is scanned
+  description: ""
+  use_blueprint:
+    path: play_plex_movie.yaml
+    input:
+      plex_player_id: media_player.plex_plex_for_apple_tv_living_room_apple_tv
+      tag_id: 68b964ea-e2dc-45fe-8e23-855b931f95c2
+      movie_name: 21 Jump Street
+      movie_library: Movies
