@@ -1,0 +1,36 @@
+# https://community.home-assistant.io/t/start-music-on-alexa-media-player-or-movie-on-plex-when-a-tag-is-scanned/256630/14
+blueprint:
+    name: Start movie on Plex when tag is scanned
+    description: When a tag is scanned, start the associated movie on the selected Plex media player
+    domain: automation
+    input:
+        tag_id:
+            name: Tag ID
+            description: The tag ID for the selected movie
+        movie_name:
+            name: Movie name
+            description: The name of the movie to play
+        movie_library:
+            name: Movie library
+            description: The name of the movie library in plex, usually "Movies"
+        plex_player_id:
+            name: Plex player
+            description: The entity ID of the Plex player to use
+            selector:
+                entity:
+                    domain: media_player
+
+variables:
+    name: !input movie_name
+    library: !input movie_library
+
+trigger:
+    - platform: tag
+      tag_id: !input tag_id
+
+action:
+    - service: media_player.play_media
+      data_template:
+          entity_id: !input plex_player_id
+          media_content_type: movie
+          media_content_id: '{ "library_name": "{{ library }}", "title": "{{ name }}" }'
