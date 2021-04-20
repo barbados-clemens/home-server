@@ -20,3 +20,17 @@ binary_sensor:
       name: "Cloudflare DNS Check"
       count: 2
       scan_interval: 15
+
+sensor:
+    - platform: nut
+      name: TRIPP LITE UPS
+      host: 192.168.1.67
+      resources: 
+        - ups.status
+        - ups.load
+        - ups.power
+        - input.voltage
+        - battery.charge
+        - battery.runtime
+        - battery.voltage
+        - output.voltage
