@@ -12,6 +12,8 @@
  **/
 
 require('dotenv').config();
+const Twilio = require('twilio')
+const twilioClient = new Twilio(process.env.TWILIO_SID, process.env.TWILIO_AUTH_TOKEN);
 
 module.exports = {
     // the tcp port that the Node-RED web server is listening on
@@ -237,9 +239,7 @@ module.exports = {
     // can be accessed in a function block as:
     //    global.get("os")
     functionGlobalContext: {
-        twilio: require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN, {
-            lazyLoading: true
-        }),
+        twilioClient,
         // os:require('os'),
         // jfive:require("johnny-five"),
         // j5board:require("johnny-five").Board({repl:false})
