@@ -21,16 +21,11 @@ binary_sensor:
       count: 2
       scan_interval: 15
 
-sensor:
-    - platform: nut
-      name: TRIPP LITE UPS
-      host: 192.168.1.67
-      resources: 
-        - ups.status
-        - ups.load
-        - ups.power
-        - input.voltage
-        - battery.charge
-        - battery.runtime
-        - battery.voltage
-        - output.voltage
+twilio:
+    account_sid: !secret twilio_account_sid
+    auth_token: !secret twilio_auth_token
+
+notify:
+    - name: Twilio SMS Notifier
+      platform: twilio_sms
+      from_number: +16023629258
