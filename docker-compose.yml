@@ -1,111 +1,122 @@
 version: '3'
 services:
-  homeassistant:
-    container_name: home-assistant
-    image: homeassistant/home-assistant:stable
-    volumes:
-      - $PWD/home-assistant/config:/config
-      - /mnt/media:/media/nas
-    environment:
-      - TZ=America/Chicago
-    restart: unless-stopped
-    network_mode: host
+    homeassistant:
+        container_name: home-assistant
+        image: homeassistant/home-assistant:stable
+        volumes:
+            - $PWD/home-assistant/config:/config
+            - /mnt/media:/media/nas
+        environment:
+            - TZ=America/Chicago
+        restart: unless-stopped
+        network_mode: host
 
-  homebridge:
-    container_name: homebridge
-    image: oznu/homebridge:latest
-    network_mode: host
-    environment:
-      HOMEBRIDGE_CONFIG_UI: '1'
-      HOMEBRIDGE_CONFIG_UI_PORT: '8090'
-      PGUID: '1000'
-      PUID: '1000'
-      TZ: America/Chicago
-    volumes:
-      - $PWD/homebridge/config:/homebridge:rw
-    restart: unless-stopped
+    homebridge:
+        container_name: homebridge
+        image: oznu/homebridge:latest
+        network_mode: host
+        environment:
+            HOMEBRIDGE_CONFIG_UI: '1'
+            HOMEBRIDGE_CONFIG_UI_PORT: '8090'
+            PGUID: '1000'
+            PUID: '1000'
+            TZ: America/Chicago
+        volumes:
+            - $PWD/homebridge/config:/homebridge:rw
+        restart: unless-stopped
 
-  node-red:
-    image: nodered/node-red
-    network_mode: host
-    volumes:
-      - $PWD/node-red/data:/data
-    restart: unless-stopped
+    node-red:
+        image: nodered/node-red
+        network_mode: host
+        volumes:
+            - $PWD/node-red/data:/data
+        restart: unless-stopped
 
-  papermerge:
-    image: ghcr.io/linuxserver/papermerge
-    container_name: papermerge
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=America/Chicago
-      # - REDIS_URL= #optional
-    volumes:
-      - $PWD/papermerge/appdata/config:/config
-      - /mnt/filestore/papermerge:/data
-    ports:
-      - 8000:8000
-    restart: unless-stopped
+    mqtt:
+        image: eclipse-mosquitto
+        ports:
+            - 8383:8383
+            - 9001:9001
+        volumes:
+            - $PWD/mqtt/mosquitto.conf:/mosquitto/config/mosquitto.conf
+            - $PWD/mqtt/data:/mosquitto/data
+            - $PWD/mqtt/log:/mosquitto/log
 
-  makemkv:
-    image: jlesage/makemkv
-    container_name: makemkv
-    network_mode: host
-    ports:
-      - 5800:5800
-    volumes:
-      - $PWD/makemkv/appdata:/config:rw
-      - $HOME:/storage:ro
-      - /mnt/media/ingest:/output:rw
-    devices:
-      - /dev/sr0:/dev/sr0
-      - /dev/sg0:/dev/sg0
-    restart: always
 
-  plex:
-    image: linuxserver/plex
-    container_name: plex
-    network_mode: host
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - VERSION=docker
-    volumes:
-      - $PWD/plex/config:/config
-      - /mnt/media:/media
-    restart: always
+    papermerge:
+        image: ghcr.io/linuxserver/papermerge
+        container_name: papermerge
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - TZ=America/Chicago
+            # - REDIS_URL= #optional
+        volumes:
+            - $PWD/papermerge/appdata/config:/config
+            - /mnt/filestore/papermerge:/data
+        ports:
+            - 8000:8000
+        restart: unless-stopped
 
-  tautulli:
-    image: linuxserver/tautulli
-    container_name: tautulli
-    ports:
-      - 8181:8181
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=America/Chicago
-    volumes:
-      - $PWD/tautulli/config:/config
-      - $PWD/plex/config/Library/Application Support/Plex Media Server/Logs:/logs
-    restart: unless-stopped
+    makemkv:
+        image: jlesage/makemkv
+        container_name: makemkv
+        network_mode: host
+        ports:
+            - 5800:5800
+        volumes:
+            - $PWD/makemkv/appdata:/config:rw
+            - $HOME:/storage:ro
+            - /mnt/media/ingest:/output:rw
+        devices:
+            - /dev/sr0:/dev/sr0
+            - /dev/sg0:/dev/sg0
+        restart: always
 
-  unifi-controller:
-    image: linuxserver/unifi-controller
-    container_name: unifi-controller
-    network_mode: host
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - MEM_LIMIT=2048M #optional
-    volumes:
-      - $PWD/unifi/config:/config
-    ports:
-      - 3478:3478/udp
-      - 10001:10001/udp
-      - 8080:8080
-      - 8081:8081
-      - 8443:8443
-      - 8843:8843
-      - 8880:8880
-      - 6789:6789
-    restart: always
+    plex:
+        image: linuxserver/plex
+        container_name: plex
+        network_mode: host
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - VERSION=docker
+        volumes:
+            - $PWD/plex/config:/config
+            - /mnt/media:/media
+        restart: always
+
+    tautulli:
+        image: linuxserver/tautulli
+        container_name: tautulli
+        ports:
+            - 8181:8181
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - TZ=America/Chicago
+        volumes:
+            - $PWD/tautulli/config:/config
+            - $PWD/plex/config/Library/Application Support/Plex Media Server/Logs:/logs
+        restart: unless-stopped
+
+    unifi-controller:
+        image: linuxserver/unifi-controller
+        container_name: unifi-controller
+        network_mode: host
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - MEM_LIMIT=2048M #optional
+        volumes:
+            - $PWD/unifi/config:/config
+        ports:
+            - 3478:3478/udp
+            - 10001:10001/udp
+            - 8080:8080
+            - 8081:8081
+            - 8443:8443
+            - 8843:8843
+            - 8880:8880
+            - 6789:6789
+        restart: always
