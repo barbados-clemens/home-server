@@ -20,7 +20,7 @@
   trigger:
     - platform: event
       event_type: START_CLEANING
-  condition: []
+  condition: [ ]
   action:
     - scene: scene.cleaning_lights
   mode: single
@@ -33,9 +33,17 @@
       from: "on"
       to: "off"
       for: "30"
-  condition: []
+  condition: [ ]
   action:
     - scene: scene.no_internet_lights
+    - service: notify.twilio_sms_notifier
+      data:
+        message: Internet is down 🙁
+        target:
+          - !secret caleb_phone
+        data:
+          data:
+            - media_url: https://i.giphy.com/media/yjos61Qgsy17q/giphy.gif
   mode: single
 - id: "1618840048067"
   alias: Set normal office lights when internet ping resumes
@@ -46,9 +54,17 @@
       from: "off"
       to: "on"
       for: "10"
-  condition: []
+  condition: [ ]
   action:
     - scene: scene.clear_office_lights
+    - service: notify.twilio_sms_notifier
+      data:
+        message: Internet is back up 🎉
+        target:
+          - !secret caleb_phone
+        data:
+          data:
+            - media_url: https://i.giphy.com/media/3ohzdIuqJoo8QdKlnW/giphy.gif
   mode: single
 - id: "1618878988783"
   alias: Start movie on Plex when tag is scanned
