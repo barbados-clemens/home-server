@@ -11,4 +11,5 @@ jobs:
 
       - name: Validate Docker Compose File
         run: |
+          cp ./node-red/data/.env.example ./node-red/data/.env
           docker-compose -f docker-compose.yml config
