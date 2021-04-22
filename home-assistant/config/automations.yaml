@@ -14,18 +14,16 @@
   action:
     - scene: scene.tv_time
   mode: single
-
 - id: '1618702660714'
   alias: Set lights for cleaning
   description: ''
   trigger:
     - platform: event
       event_type: START_CLEANING
-  condition: []
+  condition: [ ]
   action:
     - scene: scene.cleaning_lights
   mode: single
-
 - id: '1618839795076'
   alias: Set lights when not internet ping
   description: ''
@@ -35,11 +33,10 @@
       from: 'on'
       to: 'off'
       for: '30'
-  condition: []
+  condition: [ ]
   action:
     - scene: scene.no_internet_lights
   mode: single
-
 - id: '1618840048067'
   alias: Set normal office lights when internet ping resumes
   description: ''
@@ -49,11 +46,10 @@
       from: 'off'
       to: 'on'
       for: '10'
-  condition: []
+  condition: [ ]
   action:
     - scene: scene.clear_office_lights
   mode: single
-
 - id: '1618878988783'
   alias: Start movie on Plex when tag is scanned
   description: ''
@@ -61,10 +57,9 @@
     path: play_plex_movie.yaml
     input:
       plex_player_id: media_player.plex_plex_for_apple_tv_living_room_apple_tv
-      tag_id: 68b964ea-e2dc-45fe-8e23-855b931f95c2
-      movie_name: 21 Jump Street
+      movie_name: Howl's Moving Castle
       movie_library: Movies
-
+      tag_id: 204822f6-a8b5-4fd4-9e7b-c183383f829f
 - id: '1618878988993'
   alias: play roon on living room speakers
   description: turn on receiver and set volume to 65% unless the apple tv is already
@@ -113,3 +108,49 @@
       data:
         source: audio3
   mode: single
+- id: '1619111140636'
+  alias: Handle Tag Scan
+  trigger:
+    - platform: event
+      event_type: tag_scanned
+  condition:
+    - condition: template
+      value_template: '{{ trigger.event.data.tag_id in tags }}'
+    - condition: template
+      value_template: '{{ trigger.event.data.device_id in media_players }}'
+  action:
+    - variables:
+        media_player_entity_id: '{{ media_players[trigger.event.data.device_id] }}'
+        media_content_id: '{{ tags[trigger.event.data.tag_id].media_content_id }}'
+        media_content_type: '{{ tags[trigger.event.data.tag_id].media_content_type }}'
+    - service: media_player.turn_on
+      target:
+        device_id: 92888a63a6984b285c43529a5423e8ca
+        entity_id: media_player.living_room_main
+    - delay: 2
+    - service: media_player.select_source
+      data:
+        source: hdmi4
+      target:
+        entity_id: media_player.living_room_main
+        # plex player needs to have already been registered by this point
+        # for whatever reason plex doesn't like trying to play on initial app load from HA
+    - service: media_player.play_media
+      target:
+        entity_id: '{{ media_player_entity_id }}'
+      data:
+        media_content_id: '{{ media_content_id }}'
+        media_content_type: '{{ media_content_type }}'
+    - delay: 2
+  mode: single
+  max_exceeded: silent
+  variables:
+    media_players:
+      C6096229-8798-4B1C-849A-3830DF9FE25A: media_player.living_room_apple_tv
+    tags:
+      204822f6-a8b5-4fd4-9e7b-c183383f829f: # this is the tag id
+        media_content_id: '{ "library_name": "Movies", "title": "Howl''s Moving Castle"}' # JSON to send to plex
+        media_content_type:
+      04-B1-C6-62-2F-64-80:
+        media_content_id: spotify:playlist:0OtWh3u6fZrBJTQtVBQWge
+        media_content_type: playlist
