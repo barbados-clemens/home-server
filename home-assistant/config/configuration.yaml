@@ -12,6 +12,7 @@ scene: !include scenes.yaml
 
 media_player:
   - platform: musiccast_yamaha
+    name: Living Room Reciever
     host: 192.168.1.139
     port: 5005
     source_ignore:
@@ -40,7 +41,7 @@ twilio:
 notify:
   - name: Twilio SMS Notifier
     platform: twilio_sms
-    from_number: +16023629258
+    from_number: !secret twilio_number
 
 spotify:
   client_id: !secret spotify_client_id
