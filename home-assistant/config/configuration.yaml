@@ -11,9 +11,20 @@ script: !include scripts.yaml
 scene: !include scenes.yaml
 
 media_player:
-  - platform: yamaha_musiccast
+  - platform: musiccast_yamaha
     host: 192.168.1.139
-    port: 50000 # hmm what is the correct port??
+    port: 5005
+    source_ignore:
+      - "hdmi2"
+      - "hdmi3"
+      - "audio1"
+      - "audio2"
+    source_names:
+      hdmi1: "Nintendo Switch"
+      hdmi4: "Living Room Apple TV"
+      audio3: "Roon"
+      audio4: "ChromeCast"
+      audio5: "Vinyl"
 
 binary_sensor:
   - platform: ping
