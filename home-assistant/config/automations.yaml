@@ -148,9 +148,78 @@
     media_players:
       C6096229-8798-4B1C-849A-3830DF9FE25A: media_player.living_room_apple_tv
     tags:
-      204822f6-a8b5-4fd4-9e7b-c183383f829f: # this is the tag id
-        media_content_id: '{ "library_name": "Movies", "title": "Howl''s Moving Castle"}' # JSON to send to plex
-        media_content_type:
-      04-B1-C6-62-2F-64-80:
-        media_content_id: spotify:playlist:0OtWh3u6fZrBJTQtVBQWge
-        media_content_type: playlist
+      204822f6-a8b5-4fd4-9e7b-c183383f829f:
+        media_content_id: '{ "library_name": "Movies", "title": "Howl''s Moving Castle"}'
+        media_content_type: movie
+      6ef23e8a-023b-494a-a33c-c326bf8a9bf1:
+        media_content_id: '{ "library_name": "Movies", "title": "Chicago"}'
+        media_content_type: movie
+      36c3fcb1-24c8-4a4d-956e-6e93f8487c21:
+        media_content_id: '{ "library_name": "Movies", "title": "Godzilla"}'
+        media_content_type: movie
+      2a636087-7646-4b36-9992-4553526d86dd:
+        media_content_id: '{ "library_name": "Movies", "title": "elf"}'
+        media_content_type: movie
+      4e2bba1f-3aa3-47e1-8be2-6732f33d0414:
+        media_content_id: '{ "library_name": "Movies", "title": "Non-Stop"}'
+        media_content_type: movie
+      c019cf8a-c7fc-44c2-afd6-747c02d23dbd:
+        media_content_id: '{ "library_name": "Movies", "title": "Mean Girls"}'
+        media_content_type: movie
+      9ed5a74e-7b7b-4b08-b5f2-13074e872f31:
+        media_content_id: '{ "library_name": "Movies", "title": "Top Gun"}'
+        media_content_type: movie
+      c5262c57-f60b-4ce9-ad22-ae7c54e094d1:
+        media_content_id: '{ "library_name": "Movies", "title": "Fifty Shades of Grey"}'
+        media_content_type: movie
+      75222977-ef04-442c-ac7d-358f6b810460:
+        media_content_id: '{ "library_name": "Movies", "title": "Twilight"}'
+        media_content_type: movie
+      d1d36b1f-59a2-4b8e-ad61-a9351934182e:
+        media_content_id: '{ "library_name": "Movies", "title": "The Outsiders"}'
+        media_content_type: movie
+      cdbeffdd-bd37-49e6-8f23-ac9b06bb5ad4:
+        media_content_id: '{ "library_name": "Movies", "title": "Now You See Me"}'
+        media_content_type: movie
+      5443a7fd-4761-4044-89fb-81fdf6219a31:
+        media_content_id: '{ "library_name": "Movies", "title": "Fury"}'
+        media_content_type: movie
+      39a42828-edb3-41b9-a120-bf3a4f906911:
+        media_content_id: '{ "library_name": "Movies", "title": "The Hunger Games"}'
+        media_content_type: movie
+      1bfddcd8-0896-48a4-9076-d58effb6f248:
+        media_content_id: '{ "library_name": "Movies", "title": "The Internship"}'
+        media_content_type: movie
+      fbfb1818-82ed-4c0a-b9ea-a2dfa9918646:
+        media_content_id: '{ "library_name": "Movies", "title": "The Hunger Games: Mockingjay - Part 1"}'
+        media_content_type: movie
+      2d2344fa-d7ee-4b47-8bd9-0b8db7b0a5ce:
+        media_content_id: '{ "library_name": "Movies", "title": "Apollo 13"}'
+        media_content_type: movie
+      82642d47-984d-403f-b7c1-a7261533d2ab:
+        media_content_id: '{ "library_name": "Movies", "title": "The Prince of Egypt"}'
+        media_content_type: movie
+      f480bd30-131f-441c-94cf-89fb707532ae:
+        media_content_id: '{ "library_name": "Movies", "title": "Rember the Titans"}'
+        media_content_type: movie
+      1eb31c5f-b103-4d82-9891-84fa81c820aa:
+        media_content_id: '{ "library_name": "Movies", "title": "Arrival"}'
+        media_content_type: movie
+      3b72e408-7f68-46f5-a025-6be94571250d:
+        media_content_id: '{ "library_name": "Movies", "title": "Ratatouille"}'
+        media_content_type: movie
+      53fadca3-cd68-45f9-93a8-c7a41ad8f9a3:
+        media_content_id: '{ "library_name": "Movies", "title": "Dodgeball: A True Underdog Story"}'
+        media_content_type: movie
+      cb13a3b6-e32c-44c1-80d1-27a3fd506bc5:
+        media_content_id: '{ "library_name": "Movies", "title": "Ghostbusters (2016)"}'
+        media_content_type: movie
+      a98ec0ab-e377-4d73-a532-829cc7ac7601:
+        media_content_id: '{ "library_name": "Movies", "title": "Kiki''s Delivery Service"}'
+        media_content_type: movie
+      0181a1e9-3eb8-49bd-be05-ff08eae13088:
+        media_content_id: '{ "library_name": "Movies", "title": "Spirited Away"}'
+        media_content_type: movie
+      e40714a4-145c-4e51-9832-ba770c2520ea:
+        media_content_id: '{ "library_name": "Movies", "title": "Princess Mononoke"}'
+        media_content_type: movie
