@@ -14,6 +14,7 @@
   action:
     - scene: scene.tv_time
   mode: single
+
 - id: "1618702660714"
   alias: Set lights for cleaning
   description: ""
@@ -24,6 +25,7 @@
   action:
     - scene: scene.cleaning_lights
   mode: single
+
 - id: "1618839795076"
   alias: Set lights when not internet ping
   description: ""
@@ -45,6 +47,7 @@
           data:
             - media_url: https://i.giphy.com/media/yjos61Qgsy17q/giphy.gif
   mode: single
+
 - id: "1618840048067"
   alias: Set normal office lights when internet ping resumes
   description: ""
@@ -66,6 +69,7 @@
           data:
             - media_url: https://i.giphy.com/media/3ohzdIuqJoo8QdKlnW/giphy.gif
   mode: single
+
 - id: "1618878988783"
   alias: Start movie on Plex when tag is scanned
   description: ""
@@ -76,3 +80,46 @@
       tag_id: 68b964ea-e2dc-45fe-8e23-855b931f95c2
       movie_name: 21 Jump Street
       movie_library: Movies
+
+- id: "1618878988993"
+  alias: play roon on living room speakers
+  description: 'turn on receiver and set volume t0 65% unless the apple tv is already doing something when playing roon'
+  mode: single
+  trigger:
+    - platform: device
+      device_id: 1023b53d4dd8817d7ef146e082f1ef9d
+      domain: media_player
+      entity_id: media_player.living_room_pi
+      type: playing
+      for:
+        hours: 0
+        minutes: 0
+        seconds: 3
+        milliseconds: 0
+  condition:
+    - condition: or
+      conditions:
+        - condition: device
+          type: is_off
+          device_id: 92888a63a6984b285c43529a5423e8ca
+          entity_id: remote.living_room_apple_tv
+          domain: remote
+        - condition: device
+          device_id: 92888a63a6984b285c43529a5423e8ca
+          domain: media_player
+          entity_id: media_player.living_room_apple_tv
+          type: is_idle
+  action:
+    - service: media_player.turn_on
+      target:
+        entity_id: media_player.living_room_main
+    - service: media_player.volume_set
+      target:
+        entity_id: media_player.living_room_main
+      data:
+        volume_level: 0.65
+    - service: media_player.select_source
+      target:
+        entity_id: media_player.living_room_main
+      data:
+        input: audio3 # Roon
