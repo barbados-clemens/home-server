@@ -10,21 +10,6 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
-media_player:
-  - platform: musiccast_yamaha
-    host: 192.168.1.139
-    port: 5005
-    source_ignore:
-      - "hdmi2"
-      - "hdmi3"
-      - "audio1"
-      - "audio2"
-    source_names:
-      hdmi1: "Nintendo Switch"
-      hdmi4: "Living Room Apple TV"
-      audio3: "Roon"
-      audio4: "ChromeCast"
-      audio5: "Vinyl"
 
 binary_sensor:
   - platform: ping
@@ -45,6 +30,10 @@ notify:
 spotify:
   client_id: !secret spotify_client_id
   client_secret: !secret spotify_client_secret
+
+neato:
+  client_id: !secret neato_client_id
+  client_secret: !secret neato_client_secret
 
 sensor:
   - platform: pocketcasts

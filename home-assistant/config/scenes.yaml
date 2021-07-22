@@ -1,336 +1,461 @@
-- id: "1618701443442"
+- id: '1618701443442'
   name: TV Time
   entities:
-      light.ceiling_fan_light_1:
-          min_mireds: 153
-          max_mireds: 500
-          effect_list:
-              - colorloop
-              - random
-          friendly_name: Ceiling fan light 1
-          supported_features: 63
-          state: unavailable
-      light.ceiling_fan_light_2:
-          min_mireds: 153
-          max_mireds: 500
-          effect_list:
-              - colorloop
-              - random
-          friendly_name: Ceiling fan light 2
-          supported_features: 63
-          state: unavailable
-      light.fireplace_light_right:
-          min_mireds: 153
-          max_mireds: 500
-          effect_list:
-              - colorloop
-              - random
-          friendly_name: Fireplace light right
-          supported_features: 63
-          state: "off"
-      light.fireplace_light_left:
-          min_mireds: 153
-          max_mireds: 500
-          effect_list:
-              - colorloop
-              - random
-          friendly_name: Fireplace light left
-          supported_features: 63
-          state: "off"
-      light.hallway_light_switch:
-          friendly_name: Hallway Light Switch
-          supported_features: 1
-          state: "off"
-      light.kitchen_light:
-          min_mireds: 153
-          max_mireds: 500
-          effect_list:
-              - colorloop
-              - random
-          friendly_name: Kitchen light
-          supported_features: 63
-          state: "off"
-      light.tv_left:
-          min_mireds: 153
-          max_mireds: 500
-          effect_list:
-              - colorloop
-              - random
-          brightness: 255
-          hs_color:
-              - 38.571
-              - 49.412
-          rgb_color:
-              - 255
-              - 209
-              - 128
-          xy_color:
-              - 0.449
-              - 0.405
-          effect: none
-          friendly_name: TV Left
-          supported_features: 63
-          state: "on"
-      light.tv_right:
-          min_mireds: 153
-          max_mireds: 500
-          effect_list:
-              - colorloop
-              - random
-          brightness: 255
-          hs_color:
-              - 38.571
-              - 49.412
-          rgb_color:
-              - 255
-              - 209
-              - 128
-          xy_color:
-              - 0.449
-              - 0.405
-          effect: none
-          friendly_name: TV Right
-          supported_features: 63
-          state: "on"
-      light.office_lamp:
-          min_mireds: 153
-          max_mireds: 500
-          effect_list:
-              - colorloop
-              - random
-          friendly_name: Office lamp
-          supported_features: 63
-          state: "off"
+    light.ceiling_fan_light_1:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Ceiling fan light 1
+      supported_features: 63
+      state: unavailable
+    light.ceiling_fan_light_2:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Ceiling fan light 2
+      supported_features: 63
+      state: unavailable
+    light.fireplace_light_right:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Fireplace light right
+      supported_features: 63
+      state: 'off'
+    light.fireplace_light_left:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Fireplace light left
+      supported_features: 63
+      state: 'off'
+    light.hallway_light_switch:
+      friendly_name: Hallway Light Switch
+      supported_features: 1
+      state: 'off'
+    light.kitchen_light:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Kitchen light
+      supported_features: 63
+      state: 'off'
+    light.tv_left:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      brightness: 255
+      hs_color:
+      - 38.571
+      - 49.412
+      rgb_color:
+      - 255
+      - 209
+      - 128
+      xy_color:
+      - 0.449
+      - 0.405
+      effect: none
+      friendly_name: TV Left
+      supported_features: 63
+      state: 'on'
+    light.tv_right:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      brightness: 255
+      hs_color:
+      - 38.571
+      - 49.412
+      rgb_color:
+      - 255
+      - 209
+      - 128
+      xy_color:
+      - 0.449
+      - 0.405
+      effect: none
+      friendly_name: TV Right
+      supported_features: 63
+      state: 'on'
+    light.office_lamp:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Office lamp
+      supported_features: 63
+      state: 'off'
   icon: hass:lightbulb
-- id: "1618702570909"
+- id: '1618702570909'
   name: Cleaning Lights
   entities:
-      light.bathroom_light_switch:
-          brightness: 255
-          friendly_name: Bathroom Light Switch
-          supported_features: 1
-          state: "on"
-      light.bedroom_light_left:
-          min_mireds: 153
-          max_mireds: 500
-          effect_list:
-              - colorloop
-              - random
-          brightness: 255
-          hs_color:
-              - 0
-              - 0.392
-          rgb_color:
-              - 255
-              - 254
-              - 254
-          xy_color:
-              - 0.324
-              - 0.329
-          effect: none
-          friendly_name: Bedroom light left
-          supported_features: 63
-          state: "on"
-      light.fireplace_light_left:
-          min_mireds: 153
-          max_mireds: 500
-          effect_list:
-              - colorloop
-              - random
-          brightness: 255
-          hs_color:
-              - 0
-              - 0.392
-          rgb_color:
-              - 255
-              - 254
-              - 254
-          xy_color:
-              - 0.324
-              - 0.329
-          effect: none
-          friendly_name: Fireplace light left
-          supported_features: 63
-          state: "on"
-      light.fireplace_light_right:
-          min_mireds: 153
-          max_mireds: 500
-          effect_list:
-              - colorloop
-              - random
-          brightness: 255
-          hs_color:
-              - 0
-              - 0.392
-          rgb_color:
-              - 255
-              - 254
-              - 254
-          xy_color:
-              - 0.324
-              - 0.329
-          effect: none
-          friendly_name: Fireplace light right
-          supported_features: 63
-          state: "on"
-      light.bedroom_light_right:
-          min_mireds: 153
-          max_mireds: 500
-          effect_list:
-              - colorloop
-              - random
-          brightness: 255
-          hs_color:
-              - 0
-              - 0.392
-          rgb_color:
-              - 255
-              - 254
-              - 254
-          xy_color:
-              - 0.324
-              - 0.329
-          effect: none
-          friendly_name: Bedroom light right
-          supported_features: 63
-          state: "on"
-      light.hallway_light_switch:
-          brightness: 255
-          friendly_name: Hallway Light Switch
-          supported_features: 1
-          state: "on"
-      light.kitchen_light:
-          min_mireds: 153
-          max_mireds: 500
-          effect_list:
-              - colorloop
-              - random
-          brightness: 255
-          hs_color:
-              - 0
-              - 0.392
-          rgb_color:
-              - 255
-              - 254
-              - 254
-          xy_color:
-              - 0.324
-              - 0.329
-          effect: none
-          friendly_name: Kitchen light
-          supported_features: 63
-          state: "on"
-      light.office_lamp:
-          min_mireds: 153
-          max_mireds: 500
-          effect_list:
-              - colorloop
-              - random
-          brightness: 255
-          color_temp: 153
-          effect: none
-          friendly_name: Office lamp
-          supported_features: 63
-          state: "on"
-      light.tv_left:
-          min_mireds: 153
-          max_mireds: 500
-          effect_list:
-              - colorloop
-              - random
-          brightness: 255
-          hs_color:
-              - 0
-              - 0.392
-          rgb_color:
-              - 255
-              - 254
-              - 254
-          xy_color:
-              - 0.324
-              - 0.329
-          effect: none
-          friendly_name: TV Left
-          supported_features: 63
-          state: "on"
-      light.tv_right:
-          min_mireds: 153
-          max_mireds: 500
-          effect_list:
-              - colorloop
-              - random
-          brightness: 255
-          color_temp: 153
-          effect: none
-          friendly_name: TV Right
-          supported_features: 63
-          state: "on"
-      light.ceiling_fan_light_1:
-          min_mireds: 153
-          max_mireds: 500
-          effect_list:
-              - colorloop
-              - random
-          friendly_name: Ceiling fan light 1
-          supported_features: 63
-          state: unavailable
-      light.ceiling_fan_light_2:
-          min_mireds: 153
-          max_mireds: 500
-          effect_list:
-              - colorloop
-              - random
-          friendly_name: Ceiling fan light 2
-          supported_features: 63
-          state: unavailable
+    light.bathroom_light_switch:
+      brightness: 255
+      friendly_name: Bathroom Light Switch
+      supported_features: 1
+      state: 'on'
+    light.bedroom_light_left:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      brightness: 255
+      hs_color:
+      - 0
+      - 0.392
+      rgb_color:
+      - 255
+      - 254
+      - 254
+      xy_color:
+      - 0.324
+      - 0.329
+      effect: none
+      friendly_name: Bedroom light left
+      supported_features: 63
+      state: 'on'
+    light.fireplace_light_left:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      brightness: 255
+      hs_color:
+      - 0
+      - 0.392
+      rgb_color:
+      - 255
+      - 254
+      - 254
+      xy_color:
+      - 0.324
+      - 0.329
+      effect: none
+      friendly_name: Fireplace light left
+      supported_features: 63
+      state: 'on'
+    light.fireplace_light_right:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      brightness: 255
+      hs_color:
+      - 0
+      - 0.392
+      rgb_color:
+      - 255
+      - 254
+      - 254
+      xy_color:
+      - 0.324
+      - 0.329
+      effect: none
+      friendly_name: Fireplace light right
+      supported_features: 63
+      state: 'on'
+    light.bedroom_light_right:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      brightness: 255
+      hs_color:
+      - 0
+      - 0.392
+      rgb_color:
+      - 255
+      - 254
+      - 254
+      xy_color:
+      - 0.324
+      - 0.329
+      effect: none
+      friendly_name: Bedroom light right
+      supported_features: 63
+      state: 'on'
+    light.hallway_light_switch:
+      brightness: 255
+      friendly_name: Hallway Light Switch
+      supported_features: 1
+      state: 'on'
+    light.kitchen_light:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      brightness: 255
+      hs_color:
+      - 0
+      - 0.392
+      rgb_color:
+      - 255
+      - 254
+      - 254
+      xy_color:
+      - 0.324
+      - 0.329
+      effect: none
+      friendly_name: Kitchen light
+      supported_features: 63
+      state: 'on'
+    light.office_lamp:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      brightness: 255
+      color_temp: 153
+      effect: none
+      friendly_name: Office lamp
+      supported_features: 63
+      state: 'on'
+    light.tv_left:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      brightness: 255
+      hs_color:
+      - 0
+      - 0.392
+      rgb_color:
+      - 255
+      - 254
+      - 254
+      xy_color:
+      - 0.324
+      - 0.329
+      effect: none
+      friendly_name: TV Left
+      supported_features: 63
+      state: 'on'
+    light.tv_right:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      brightness: 255
+      color_temp: 153
+      effect: none
+      friendly_name: TV Right
+      supported_features: 63
+      state: 'on'
+    light.ceiling_fan_light_1:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Ceiling fan light 1
+      supported_features: 63
+      state: unavailable
+    light.ceiling_fan_light_2:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Ceiling fan light 2
+      supported_features: 63
+      state: unavailable
   icon: hass:bucket
-- id: "1618839663676"
+- id: '1618839663676'
   name: No Internet Lights
   entities:
-      light.office_lamp:
-          min_mireds: 153
-          max_mireds: 500
-          effect_list:
-              - colorloop
-              - random
-          brightness: 255
-          hs_color:
-              - 10.118
-              - 100
-          rgb_color:
-              - 255
-              - 43
-              - 0
-          xy_color:
-              - 0.689
-              - 0.309
-          effect: none
-          friendly_name: Office lamp
-          supported_features: 63
-          state: "on"
+    light.office_lamp:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      brightness: 255
+      hs_color:
+      - 10.118
+      - 100
+      rgb_color:
+      - 255
+      - 43
+      - 0
+      xy_color:
+      - 0.689
+      - 0.309
+      effect: none
+      friendly_name: Office lamp
+      supported_features: 63
+      state: 'on'
   icon: hass:alarm
-- id: "1618839961969"
+- id: '1618839961969'
   name: Clear Office Lights
   entities:
-      light.office_lamp:
-          min_mireds: 153
-          max_mireds: 500
-          effect_list:
-              - colorloop
-              - random
-          brightness: 255
-          hs_color:
-              - 38.667
-              - 52.941
-          rgb_color:
-              - 255
-              - 207
-              - 120
-          xy_color:
-              - 0.457
-              - 0.41
-          effect: none
-          friendly_name: Office lamp
-          supported_features: 63
-          state: "on"
+    light.office_lamp:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      brightness: 255
+      hs_color:
+      - 38.667
+      - 52.941
+      rgb_color:
+      - 255
+      - 207
+      - 120
+      xy_color:
+      - 0.457
+      - 0.41
+      effect: none
+      friendly_name: Office lamp
+      supported_features: 63
+      state: 'on'
+  icon: hass:lightbulb
+- id: '1622661381455'
+  name: All Lights off
+  entities:
+    light.bedroom_light_left:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      supported_color_modes:
+      - color_temp
+      - hs
+      friendly_name: Bedroom light left
+      supported_features: 63
+      state: 'off'
+    light.bedroom_light_right:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      supported_color_modes:
+      - color_temp
+      - hs
+      friendly_name: Bedroom light right
+      supported_features: 63
+      state: 'off'
+    light.ceiling_fan_light_1:
+      restored: true
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      supported_color_modes:
+      - color_temp
+      - hs
+      supported_features: 63
+      friendly_name: Ceiling fan light 1
+      state: unavailable
+    light.ceiling_fan_light_2:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      supported_color_modes:
+      - color_temp
+      - hs
+      friendly_name: Ceiling fan light 2
+      supported_features: 63
+      state: unavailable
+    light.fireplace_light_left:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      supported_color_modes:
+      - color_temp
+      - hs
+      friendly_name: Fireplace light left
+      supported_features: 63
+      state: 'off'
+    light.fireplace_light_right:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      supported_color_modes:
+      - color_temp
+      - hs
+      friendly_name: Fireplace light right
+      supported_features: 63
+      state: 'off'
+    light.kitchen_light:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      supported_color_modes:
+      - color_temp
+      - hs
+      friendly_name: Kitchen light
+      supported_features: 63
+      state: 'off'
+    light.office_lamp:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      supported_color_modes:
+      - color_temp
+      - hs
+      friendly_name: Office light
+      supported_features: 63
+      state: 'off'
+    light.tv_left:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      supported_color_modes:
+      - color_temp
+      - hs
+      friendly_name: TV Left
+      supported_features: 63
+      state: 'off'
+    light.tv_right:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      supported_color_modes:
+      - color_temp
+      - hs
+      friendly_name: TV Right
+      supported_features: 63
+      state: 'off'
   icon: hass:lightbulb

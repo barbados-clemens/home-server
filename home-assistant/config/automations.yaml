@@ -2,53 +2,53 @@
   alias: Set Living Room lights when playing apple tv
   description: ''
   trigger:
-    - platform: state
-      entity_id: media_player.living_room_apple_tv
-      to: playing
-      for: 00:00:15
+  - platform: state
+    entity_id: media_player.living_room_apple_tv
+    to: playing
+    for: 00:00:15
   condition:
-    - condition: state
-      entity_id: media_player.living_room_apple_tv
-      state: Plex
-      attribute: app_name
+  - condition: state
+    entity_id: media_player.living_room_apple_tv
+    state: Plex
+    attribute: app_name
   action:
-    - scene: scene.tv_time
+  - scene: scene.tv_time
   mode: single
 - id: '1618702660714'
   alias: Set lights for cleaning
   description: ''
   trigger:
-    - platform: event
-      event_type: START_CLEANING
-  condition: [ ]
+  - platform: event
+    event_type: START_CLEANING
+  condition: []
   action:
-    - scene: scene.cleaning_lights
+  - scene: scene.cleaning_lights
   mode: single
 - id: '1618839795076'
   alias: Set lights when not internet ping
   description: ''
   trigger:
-    - platform: state
-      entity_id: binary_sensor.cloudflare_dns_check
-      from: 'on'
-      to: 'off'
-      for: '30'
-  condition: [ ]
+  - platform: state
+    entity_id: binary_sensor.cloudflare_dns_check
+    from: 'on'
+    to: 'off'
+    for: '30'
+  condition: []
   action:
-    - scene: scene.no_internet_lights
+  - scene: scene.no_internet_lights
   mode: single
 - id: '1618840048067'
   alias: Set normal office lights when internet ping resumes
   description: ''
   trigger:
-    - platform: state
-      entity_id: binary_sensor.cloudflare_dns_check
-      from: 'off'
-      to: 'on'
-      for: '10'
-  condition: [ ]
+  - platform: state
+    entity_id: binary_sensor.cloudflare_dns_check
+    from: 'off'
+    to: 'on'
+    for: '30'
+  condition: []
   action:
-    - scene: scene.clear_office_lights
+  - scene: scene.clear_office_lights
   mode: single
 - id: '1618878988783'
   alias: Start movie on Plex when tag is scanned
@@ -62,86 +62,67 @@
       tag_id: 204822f6-a8b5-4fd4-9e7b-c183383f829f
 - id: '1618878988993'
   alias: play roon on living room speakers
-  description: turn on receiver and set volume to 65% unless the apple tv is already
-    doing something when playing roon
+  description: turn on receiver and set volume
   trigger:
-    - platform: device
-      device_id: 1023b53d4dd8817d7ef146e082f1ef9d
-      domain: media_player
-      entity_id: media_player.living_room_pi
-      type: playing
-      for:
-        hours: 0
-        minutes: 0
-        seconds: 2
-        milliseconds: 0
-  condition:
-    - condition: or
-      conditions:
-        - condition: device
-          device_id: 92888a63a6984b285c43529a5423e8ca
-          domain: media_player
-          entity_id: media_player.living_room_apple_tv
-          type: is_idle
-        - condition: device
-          device_id: 92888a63a6984b285c43529a5423e8ca
-          domain: media_player
-          entity_id: media_player.living_room_apple_tv
-          type: is_off
-        - condition: device
-          device_id: 92888a63a6984b285c43529a5423e8ca
-          domain: media_player
-          entity_id: media_player.living_room_apple_tv
-          type: is_paused
+  - platform: device
+    device_id: 1023b53d4dd8817d7ef146e082f1ef9d
+    domain: media_player
+    entity_id: media_player.living_room_pi
+    type: playing
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  condition: []
   action:
-    - service: media_player.turn_on
-      target:
-        entity_id: media_player.living_room_main
-    - service: media_player.volume_set
-      target:
-        entity_id: media_player.living_room_main
-      data:
-        volume_level: 0.65
-    - service: media_player.select_source
-      target:
-        entity_id: media_player.living_room_main
-      data:
-        source: audio3
+  - service: media_player.turn_on
+    target:
+      entity_id:
+      - media_player.living_room
+  - service: media_player.volume_set
+    data:
+      volume_level: 0.55
+    target:
+      entity_id: media_player.living_room
+  - service: media_player.select_source
+    data:
+      source: audio3
+    target:
+      entity_id: media_player.living_room
   mode: single
 - id: '1619111140636'
   alias: Handle Tag Scan
   trigger:
-    - platform: event
-      event_type: tag_scanned
+  - platform: event
+    event_type: tag_scanned
   condition:
-    - condition: template
-      value_template: '{{ trigger.event.data.tag_id in tags }}'
-    - condition: template
-      value_template: '{{ trigger.event.data.device_id in media_players }}'
+  - condition: template
+    value_template: '{{ trigger.event.data.tag_id in tags }}'
+  - condition: template
+    value_template: '{{ trigger.event.data.device_id in media_players }}'
   action:
-    - variables:
-        media_player_entity_id: '{{ media_players[trigger.event.data.device_id] }}'
-        media_content_id: '{{ tags[trigger.event.data.tag_id].media_content_id }}'
-        media_content_type: '{{ tags[trigger.event.data.tag_id].media_content_type }}'
-    - service: media_player.turn_on
-      target:
-        device_id: 92888a63a6984b285c43529a5423e8ca
-        entity_id: media_player.living_room_main
-    - delay: 2
-    - service: media_player.select_source
-      data:
-        source: hdmi4
-      target:
-        entity_id: media_player.living_room_main
-        # plex player needs to have already been registered by this point
-        # for whatever reason plex doesn't like trying to play on initial app load from HA
-    - service: media_player.play_media
-      target:
-        entity_id: '{{ media_player_entity_id }}'
-      data:
-        media_content_id: '{{ media_content_id }}'
-        media_content_type: '{{ media_content_type }}'
-    - delay: 2
+  - variables:
+      media_player_entity_id: '{{ media_players[trigger.event.data.device_id] }}'
+      media_content_id: '{{ tags[trigger.event.data.tag_id].media_content_id }}'
+      media_content_type: '{{ tags[trigger.event.data.tag_id].media_content_type }}'
+  - service: media_player.turn_on
+    target:
+      device_id: 92888a63a6984b285c43529a5423e8ca
+      entity_id: media_player.living_room_main
+  - delay: 2
+  - service: media_player.select_source
+    data:
+      source: hdmi4
+    target:
+      entity_id: media_player.living_room_main
+  - service: media_player.play_media
+    target:
+      entity_id: '{{ media_player_entity_id }}'
+    data:
+      media_content_id: '{{ media_content_id }}'
+      media_content_type: '{{ media_content_type }}'
+  - delay: 2
   mode: single
   max_exceeded: silent
   variables:
@@ -191,7 +172,8 @@
         media_content_id: '{ "library_name": "Movies", "title": "The Internship"}'
         media_content_type: movie
       fbfb1818-82ed-4c0a-b9ea-a2dfa9918646:
-        media_content_id: '{ "library_name": "Movies", "title": "The Hunger Games: Mockingjay - Part 1"}'
+        media_content_id: '{ "library_name": "Movies", "title": "The Hunger Games:
+          Mockingjay - Part 1"}'
         media_content_type: movie
       2d2344fa-d7ee-4b47-8bd9-0b8db7b0a5ce:
         media_content_id: '{ "library_name": "Movies", "title": "Apollo 13"}'
@@ -209,13 +191,15 @@
         media_content_id: '{ "library_name": "Movies", "title": "Ratatouille"}'
         media_content_type: movie
       53fadca3-cd68-45f9-93a8-c7a41ad8f9a3:
-        media_content_id: '{ "library_name": "Movies", "title": "Dodgeball: A True Underdog Story"}'
+        media_content_id: '{ "library_name": "Movies", "title": "Dodgeball: A True
+          Underdog Story"}'
         media_content_type: movie
       cb13a3b6-e32c-44c1-80d1-27a3fd506bc5:
         media_content_id: '{ "library_name": "Movies", "title": "Ghostbusters (2016)"}'
         media_content_type: movie
       a98ec0ab-e377-4d73-a532-829cc7ac7601:
-        media_content_id: '{ "library_name": "Movies", "title": "Kiki''s Delivery Service"}'
+        media_content_id: '{ "library_name": "Movies", "title": "Kiki''s Delivery
+          Service"}'
         media_content_type: movie
       0181a1e9-3eb8-49bd-be05-ff08eae13088:
         media_content_id: '{ "library_name": "Movies", "title": "Spirited Away"}'
